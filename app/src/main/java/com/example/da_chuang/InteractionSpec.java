@@ -42,6 +42,7 @@ public class InteractionSpec {
 
 
     public InteractionSpec() {
+        System.out.println("");//TODO:这是一个测试,之后请删除这行代码
         Context c = MyApplication.getContext();
         rawTrainFilePath = Objects.requireNonNull(c.getFilesDir().getParentFile()).getPath() +
                 "/data/trainyuan.txt";
