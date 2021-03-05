@@ -26,4 +26,10 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_stopble"
         android:text="stopBle" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_game"
+        android:text="playGame" />
 </LinearLayout>

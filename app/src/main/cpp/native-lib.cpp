@@ -17,9 +17,10 @@ vector<double> Translate(double *p, int len) {
 
 extern "C"
 JNIEXPORT jint JNICALL
-Java_com_example_da_1chuang_InteractionSpec_get_1features(JNIEnv *env, jobject thiz,
-                                                          jobjectArray data, jdoubleArray features,
-                                                          jint col, jobjectArray tools) {
+Java_com_example_da_1chuang_gesture_InteractionSpec_get_1features(JNIEnv *env, jobject thiz,
+                                                                  jobjectArray data,
+                                                                  jdoubleArray features,
+                                                                  jint col, jobjectArray tools) {
     // TODO: implement get_features()
     vector<double> f(FEA_NUM * CHAN_NUM);
     for (int i = 0; i < CHAN_NUM; i++) {
@@ -41,9 +42,11 @@ Java_com_example_da_1chuang_InteractionSpec_get_1features(JNIEnv *env, jobject t
 }
 extern "C"
 JNIEXPORT jint JNICALL
-Java_com_example_da_1chuang_InteractionSpec_get_1Features(JNIEnv *env, jobject thiz,
-                                                          jobjectArray data, jint size, jint col,
-                                                          jobjectArray res, jobjectArray tools) {
+Java_com_example_da_1chuang_gesture_InteractionSpec_get_1Features(JNIEnv *env, jobject thiz,
+                                                                  jobjectArray data, jint size,
+                                                                  jint col,
+                                                                  jobjectArray res,
+                                                                  jobjectArray tools) {
     // TODO: implement get_Features()
     vector<vector<double>> f(FEA_NUM * CHAN_NUM, vector<double>(size / CHAN_NUM));//存储数据特征
     for (int i = 0; i < size / CHAN_NUM; i++) {

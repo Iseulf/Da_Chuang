@@ -1,4 +1,4 @@
-package com.example.da_chuang;
+package com.example.da_chuang.gesture;
 
 import android.app.Application;
 import android.content.Context;

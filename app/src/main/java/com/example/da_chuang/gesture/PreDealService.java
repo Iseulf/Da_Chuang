@@ -1,4 +1,4 @@
-package com.example.da_chuang;
+package com.example.da_chuang.gesture;
 /**
  * 接收蓝牙线程传过来的粗略数据，进行下一步的刷选和预处理
  * 这个线程执行完之后，如果确实存在手势会将预处理后的归一化数据写入rawTestFile中，再开启预测

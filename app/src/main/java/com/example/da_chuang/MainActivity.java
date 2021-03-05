@@ -11,6 +11,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.da_chuang.gesture.BleGetService;
+import com.example.da_chuang.gesture.InteractionSpec;
+import com.example.da_chuang.gesture.PreDealService;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -29,11 +33,13 @@ public class MainActivity extends AppCompatActivity {
     private Intent intentBle;
     private Intent preDeal;
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         InteractionSpec interactionSpec = new InteractionSpec();
 
+        Button game_button = findViewById(R.id.button_game);
         Button train_button = findViewById(R.id.button_train);
         Button predict_button = findViewById(R.id.button_predict);
         Button startBle_button = findViewById(R.id.button_startble);
@@ -93,8 +99,9 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             double x = 0;
-            File f = new File(getApplicationContext().getFilesDir().getParentFile().getPath() +
-                    "/data/result.txt");
+            File f =
+                    new File(Objects.requireNonNull(getApplicationContext().getFilesDir().getParentFile()).getPath() +
+                            "/data/result.txt");
             try {
                 FileReader fileReader = new FileReader(f);
                 BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -110,6 +117,11 @@ public class MainActivity extends AppCompatActivity {
                     "Predict over!Result is " + x + ".takes " + runTime + "ms",
                     Toast.LENGTH_LONG).show();
         });
+        game_button.setOnClickListener(v -> {
+            Intent intent = new Intent();
+            intent.setClass(MainActivity.this, GameActivity.class);
+            startActivity(intent);
+        });
 
         startBle_button.setOnClickListener(v -> startService(intentBle));
 
@@ -122,4 +134,5 @@ public class MainActivity extends AppCompatActivity {
         stopService(preDeal);
         super.onDestroy();
     }
+
 }

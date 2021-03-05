@@ -2,7 +2,7 @@
  * 用于处理经预处理且归一化后的数据
  * 以及提供和UI界面交互的逻辑
  */
-package com.example.da_chuang;
+package com.example.da_chuang.gesture;
 
 
 import android.content.Context;

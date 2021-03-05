@@ -1,4 +1,4 @@
-package com.example.da_chuang;
+package com.example.da_chuang.gesture;
 
 import android.app.Service;
 import android.content.Intent;
@@ -6,8 +6,8 @@ import android.os.IBinder;
 
 import java.io.IOException;
 
-public class TrainService extends Service {
-    public TrainService() {
+public class PredictService extends Service {
+    public PredictService() {
     }
 
     @Override
@@ -15,13 +15,13 @@ public class TrainService extends Service {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                //处理具体的逻辑
                 InteractionSpec interactionSpec = new InteractionSpec();
                 try {
-                    interactionSpec.last_train();
+                    interactionSpec.last_predict();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                //处理具体的逻辑
                 stopSelf();
             }
         }).start();

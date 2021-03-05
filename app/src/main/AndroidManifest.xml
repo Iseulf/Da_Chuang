@@ -8,27 +8,29 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".MyApplication"
+        android:name=".gesture.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Da_Chuang">
+        <activity android:name=".GameActivity"></activity>
+
         <service
-            android:name=".PreDealService"
-            android:enabled="true"
-            android:exported="true"/>
-        <service
-            android:name=".PredictService"
+            android:name=".gesture.PreDealService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".TrainService"
+            android:name=".gesture.PredictService"
             android:enabled="true"
             android:exported="true" />
         <service
-            android:name=".BleGetService"
+            android:name=".gesture.TrainService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".gesture.BleGetService"
             android:enabled="true"
             android:exported="true" />
 
