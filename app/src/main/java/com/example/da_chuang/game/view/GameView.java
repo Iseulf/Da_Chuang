@@ -129,20 +129,50 @@ public class GameView extends View {
      *
      * @return
      */
-    public boolean refreshView() {
+    public boolean refreshView(int x) {
+        //TODO:可以让refreshView接收一个参数来表示手势的结果以控制方向
         List<PointBean> pointList = snakeBean.getSnake();
         PointBean point = pointList.get(0);
         LogUtil.i("point = " + point);
         PointBean pointNew = null;
+        if (x != -1) {
+            Control control = null;
+            switch (x % 4) {
+                case 0:
+                    control = Control.UP;
+                    break;
+                case 1:
+                    control = Control.DOWN;
+                    break;
+                case 2:
+                    control = Control.LEFT;
+                    break;
+                default:
+                    control = Control.RIGHT;
+            }
+            if (this.control == Control.UP || this.control == Control.DOWN) {
+                if (control == Control.UP) {
+                    LogUtil.i("已经是上下移动了，滑动无效");
+                } else {
+                    this.control = control;
+                }
+            } else if (this.control == Control.LEFT || this.control == Control.RIGHT) {
+                if (control == Control.LEFT) {
+                    LogUtil.i("已经是左右移动了，滑动无效");
+                } else {
+                    this.control = control;
+                }
+            }
+        }
         if (point.getY() == foodBean.getY() && foodBean.getX() == point.getX())
             isAdd = true;
-        if (control == Control.LEFT) {
+        if (this.control == Control.LEFT) {
             pointNew = new PointBean(point.getX() - 1, point.getY());
-        } else if (control == Control.RIGHT) {
+        } else if (this.control == Control.RIGHT) {
             pointNew = new PointBean(point.getX() + 1, point.getY());
-        } else if (control == Control.UP) {
+        } else if (this.control == Control.UP) {
             pointNew = new PointBean(point.getX(), point.getY() - 1);
-        } else if (control == Control.DOWN) {
+        } else if (this.control == Control.DOWN) {
             pointNew = new PointBean(point.getX(), point.getY() + 1);
         }
         if (pointNew != null) {
